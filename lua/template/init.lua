@@ -104,7 +104,6 @@ local function expand_expr()
             local file_name = fn.expand('%:t:r')
             file_name = string.gsub(file_name, '_', ' ')
             file_name = string.gsub(file_name, '-', ' ')
-            file_name = string.gsub(file_name, '.', ' ')
             file_name = file_name:gsub("(%l)(%w*)", function(a, b) return string.upper(a) .. b end)
             return expand_recursively(line, expr[10], file_name)
         end,

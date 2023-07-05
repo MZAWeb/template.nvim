@@ -270,6 +270,9 @@ function temp.setup(config)
         local fname = api.nvim_buf_get_name(opt.buf)
         local row = vim.fn.readfile(fname, '', 1)[1]
         local lang = vim.split(row, '%s')[2]
+        if lang == 'text' then
+            return
+        end
         vim.treesitter.start(opt.buf, lang)
         api.nvim_buf_add_highlight(opt.buf, 0, 'Comment', 0, 0, -1)
         return
